@@ -74,6 +74,7 @@ const isIPad = (() => {
 })();
 
 let _customStatusBarHeight = null;
+let _customAppHomeIndicatorHeight = null;
 let _customStatusBarHidden = null;
 const statusBarHeight = isLandscape => {
   if (_customStatusBarHeight !== null) {
@@ -124,6 +125,10 @@ const doubleFromPercentString = percent => {
 class SafeView extends Component {
   static setStatusBarHeight = height => {
     _customStatusBarHeight = height;
+  };
+  
+  static setAppHomeIndicatorHeight = height => {
+    _customAppHomeIndicatorHeight = height;
   };
 
   static setStatusBarHidden = hidden => {
@@ -357,6 +362,10 @@ export function getInset(key, isLandscape) {
       return statusBarHeight(isLandscape);
     }
     case 'bottom': {
+      if (_customStatusBarHeight !== null) {
+        return _customStatusBarHeight;
+      }
+
       if (isIPhoneX) {
         return isLandscape ? 24 : 34;
       }
