@@ -364,8 +364,8 @@ export function getInset(key, isLandscape) {
       return statusBarHeight(isLandscape);
     }
     case 'bottom': {
-      if (_customStatusBarHeight !== null) {
-        return _customStatusBarHeight;
+      if (_customAppHomeIndicatorHeight !== null) {
+        return _customAppHomeIndicatorHeight;
       }
 
       if (isIPhoneX) {
